@@ -1,5 +1,5 @@
 <body>
-    <form id="form">
+    <form id="form" onsubmit="return inputsAreSet()">
         <label for="strategies_a">Number of strategies player A:</label> <br />
         <input type="number" id="strategies_a" name="strategies_a" min="2" max="99" value="2" />
         <br /> <br />
@@ -8,5 +8,6 @@
         <br /> <br /> <br />
         <input type="submit" name="button1" value="Stwórz tabelę" /><br />
     </form>
-    <div id="error"></div>
+
+    <script src="scripts/script.js"></script>
 </body>
