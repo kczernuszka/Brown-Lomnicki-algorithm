@@ -40,9 +40,9 @@ function getTableValues() {
 
 function getUrlParams() {
   const urlParams = new URLSearchParams(window.location.search);
-  const rows = urlParams.get('strategies_a');
-  const columns = urlParams.get('strategies_b');
-  return {rows, columns}
+  const rows = parseInt(urlParams.get('strategies_a'));
+  const columns = parseInt(urlParams.get('strategies_b'));
+  return { rows, columns }
 }
 
 function showResult() {
