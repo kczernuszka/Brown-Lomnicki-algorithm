@@ -50,7 +50,8 @@ function showResult() {
   iterates = document.forms["form"].iterates.value;
   let matrix = getTableValues();
   if (matrix.length !== 0) {
-    getResult(matrix, iterates, params);
+    result = getResult(matrix, iterates, params);
+    printResultOnPage(result);
   }
   else {
     printError();
@@ -124,6 +125,24 @@ function find_min(player) {
 
 function find_max(player) {
   return player.indexOf(Math.max(...player));
+}
+
+function printResultOnPage(result) {
+  document.getElementById("error").innerHTML = "";
+  let div = document.getElementById('result');
+  div.innerHTML = '';
+  div.innerHTML += 'Gracz A: <br />'
+  result.strategies_a.forEach((element, index) =>
+      div.innerHTML += ` p${index + 1}=${element / form.iterates.value} `);
+  div.innerHTML += '<br />';
+  div.innerHTML += `Dolna wartość gry: ${result.min_a}<br />
+      Górna wartość gry: ${result.max_a}<br /><br />`;
+  div.innerHTML += 'Gracz B: <br />'
+  result.strategies_b.forEach((element, index) =>
+     div.innerHTML += ` q${index + 1}=${element / form.iterates.value} `);
+  div.innerHTML += '<br />';
+  div.innerHTML += `Dolna wartość gry: ${result.min_b}<br />
+      Górna wartość gry: ${result.max_b}<br />`;
 }
 
 function printError() {
